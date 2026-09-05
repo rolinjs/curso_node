@@ -3,7 +3,7 @@ import pool  from "../config/db.js";
 export const obtenerCategorias = async () => {
 
     const sql = `
-        SELECT * FROM clientes
+        SELECT * FROM categorias
     `;
 
     const [rows] = await pool.query(sql);

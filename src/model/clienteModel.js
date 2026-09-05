@@ -75,6 +75,7 @@ export const editarClienteModel = async (
     return result;
 }
 
+
 export const cambiarEstadoClienteModel = async (id) => {
     const sql = `
         UPDATE clientes
