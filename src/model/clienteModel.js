@@ -74,3 +74,14 @@ export const editarClienteModel = async (
     const [result] = await pool.query(sql, values);
     return result;
 }
+
+export const cambiarEstadoClienteModel = async (id) => {
+    const sql = `
+        UPDATE clientes
+            SET clientes_estado = NOT clientes_estado
+        WHERE clientes_id = ?
+    `;
+    const [result] = await pool.query(sql, [id]);
+    return result;
+
+}

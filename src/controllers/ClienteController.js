@@ -3,7 +3,8 @@ import {
     obtenerClientes,
     crearCliente,
     obtenerClienteIdModel,
-    editarClienteModel
+    editarClienteModel,
+    cambiarEstadoClienteModel
 } from '../model/clienteModel.js';
 
 export const listarClientes = async (req, res) => {
@@ -119,4 +120,31 @@ export const editarClienteController = async (req, res) => {
             mensaje: 'ERROR INTERNO EN EL SERVIDOR.'
         })
     }
+}
+
+export const cambiarEstadoClienteController = async (req, res) => {
+
+    try {
+        
+        const id = req.params.id;
+
+        const existe = await cambiarEstadoClienteModel(id);
+
+        if(existe.affectedRows === 0) {
+            return res.status(404).json({
+                mensaje: 'Cliente no encontrado'
+            });
+        }
+
+        return res.status(200).json({
+            mensaje: 'Estado del cliente actualizado correctamente.'
+        })
+
+    } catch (error) {
+        console.log('error:', error);
+        return res.status(500).json({
+            mensaje: 'ERROR INTERNO EN EL SERVIDOR.'
+        })
+    }
+
 }
