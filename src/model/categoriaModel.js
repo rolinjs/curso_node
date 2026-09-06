@@ -29,11 +29,40 @@ export const crearCategoria = async (
     return result.insertId;
 }
 
-/* export const editarCategoriaModel = async (id) => {
+export const obtenerCategoriaIdModel = async (id) => {
+    const sql = `
+        SELECT * FROM categorias WHERE categorias_id = ?
+    `;
+
+    const [rows] = await pool.query(sql, [id]);
+    return rows[0];
+}
+
+export const editarCategoriaModel = async (
+    id,
+    nombre
+) => {
     const sql = `
         UPDATE categorias
         SET
             categorias_nombre = ?
         WHERE categorias_id = ?
     `;
-} */
+
+    const values = [
+        nombre
+    ];
+
+    const [result] = await pool.query(sql, values);
+    return result;
+}
+
+export const cambiarEstadoCategoriaModel = async (id) => {
+    const sql = `
+        UPDATE categorias
+            SET categorias_estado = NOT categorias_estado
+        WHERE categorias_id = ?    
+    `;
+    const [result] = await pool.query(sql, [id]);
+    return result;
+}
