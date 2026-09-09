@@ -1,6 +1,6 @@
 import pool  from "../config/db.js";
 
-export const obtenerCategorias = async () => {
+export const obtenerCategoriasModel = async () => {
 
     const sql = `
         SELECT * FROM categorias
@@ -12,7 +12,7 @@ export const obtenerCategorias = async () => {
 
 }
 
-export const crearCategoria = async (
+export const crearCategoriaModel = async (
     nombre
 ) => {
     const sql = `
