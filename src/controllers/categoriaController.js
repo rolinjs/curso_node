@@ -29,3 +29,14 @@ export const obtenerCategoriasController = async (req, res) => {
     }
 }
 
+/**
+ * CONTROLLER PARA CREAR UNA CATEGORIA
+ */
+export const crearCategoriaController = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
