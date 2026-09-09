@@ -3,7 +3,7 @@ import {
 } from '../model/categoriaModel.js';
 
 /**
- * CONTROLADOR PARA OBTENER CATEGORÍAS
+ * CONTROLADOR PARA OBTENER CATEGORÍAS DE LA BASE DE DATOS
  */
 export const obtenerCategoriasController = async (req, res) => {
     try {
