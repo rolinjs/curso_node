@@ -1,6 +1,7 @@
 import {
     obtenerCategoriasModel,
-    crearCategoriaModel
+    crearCategoriaModel,
+    obtenerCategoriaIdModel
 } from '../model/categoriaModel.js';
 
 /**
@@ -59,3 +60,29 @@ export const crearCategoriaController = async (req, res) => {
     }
 }
 
+/* 
+    Controller para buscar por Id
+*/
+
+export const buscarCategoriaIdController = async (req, res) => {
+    try {
+        const id = Number(req.params.id);
+        const categoria = await obtenerCategoriaIdModel(id);
+
+        if(!categoria){
+            return res.status(404).json({
+                mensaje: 'Categoria no encontrada'
+            })
+        }
+
+        return res.status(200).json({
+            mensaje: 'Categoria no encontrada',
+            data: categoria
+        });
+    } catch (error) {
+        console.log('error: ', error);
+        return res.status(500).json({
+            mensaje: 'Error intento en el servidor'
+        });
+    }
+}
