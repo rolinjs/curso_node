@@ -1,5 +1,6 @@
 import {
-    obtenerCategoriasModel
+    obtenerCategoriasModel,
+    crearCategoriaModel
 } from '../model/categoriaModel.js';
 
 /**
@@ -35,8 +36,26 @@ export const obtenerCategoriasController = async (req, res) => {
 export const crearCategoriaController = async (req, res) => {
     try {
         
+        const { nombre } = req.body;
+
+        if(!nombre || !nombre.trim()) {
+            return res.status(400).json({
+                message: 'Los datos son obligatoiros'
+            });
+        }
+
+        const nuevaCategoria = await crearCategoriaModel(nombre);
+
+        return res.status(201).json({
+            mensaje: 'Categoría creada correctamente.',
+            data: nuevaCategoria
+        })
+
     } catch (error) {
-        
+        console.log('ERROR EN: ', error);
+        return res.status(500).json({
+            mensaje: 'ERROR INTERNO EN EL SERVIDOR.'
+        });
     }
 }
 

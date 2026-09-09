@@ -18,7 +18,7 @@ export const crearCategoriaModel = async (
     const sql = `
         INSERT INTO categorias
         (
-            categorias_nombre
+            categoria_nombre
         )
         VALUES(?)
     `;
